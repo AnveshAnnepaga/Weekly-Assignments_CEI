@@ -193,20 +193,39 @@ elif page == "📊 Exploratory Data Analysis":
 # -----------------------------------------------------------------------------
 elif page == "🤖 ML Performance":
     st.markdown("<h1>Model Performance Metrics</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='subtext'>Evaluating the Random Forest Regressor optimized via RandomizedSearchCV</p>", unsafe_allow_html=True)
+    st.markdown("<p class='subtext'>Evaluating the Machine Learning Models</p>", unsafe_allow_html=True)
     
-    st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Best CV Score (MAE)", "139.17")
-    col2.metric("Test Set MAE", "113.38")
-    col3.metric("Test Set RMSE", "198.91")
-    col4.metric("R² Score", "0.9974")
-    st.markdown("</div>", unsafe_allow_html=True)
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.subheader("Model Hyperparameters")
-    st.code('''
+    metrics_path = os.path.join(BASE_DIR, "reports", "model_metrics.csv")
+    if os.path.exists(metrics_path):
+        metrics_df = pd.read_csv(metrics_path)
+        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
+        st.subheader("Model Comparison")
+        st.dataframe(metrics_df.style.highlight_min(subset=['MAE', 'RMSE'], color='#e23636').highlight_max(subset=['R2 Score'], color='#e23636'), use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        best_model = metrics_df.loc[metrics_df['R2 Score'].idxmax()]['Model']
+        st.success(f"🏆 Best Performing Model: **{best_model}**")
+        
+        # Plot comparison
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
+        fig = px.bar(metrics_df, x="Model", y="R2 Score", color="Model", template="plotly_dark", title="R2 Score Comparison")
+        fig.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(fig, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+    else:
+        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric("Best CV Score (MAE)", "139.17")
+        col2.metric("Test Set MAE", "113.38")
+        col3.metric("Test Set RMSE", "198.91")
+        col4.metric("R² Score", "0.9974")
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
+        st.subheader("Model Hyperparameters")
+        st.code('''
 RandomizedSearchCV(
     estimator=pipeline,
     param_distributions={
@@ -217,8 +236,9 @@ RandomizedSearchCV(
     },
     n_iter=20, cv=5, scoring="neg_mean_absolute_error"
 )
-    ''', language="python")
-    st.markdown("</div>", unsafe_allow_html=True)
+        ''', language="python")
+        st.markdown("</div>", unsafe_allow_html=True)
+        st.info("Run the notebook to train XGBoost, AdaBoost, and GradientBoosting to see dynamic comparison here!")
 
 # -----------------------------------------------------------------------------
 # 7. PAGE: FEATURE IMPORTANCE

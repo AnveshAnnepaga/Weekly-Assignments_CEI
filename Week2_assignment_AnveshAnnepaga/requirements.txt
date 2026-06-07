@@ -7,3 +7,4 @@ prophet
 joblib
 streamlit
 plotly
+xgboost
