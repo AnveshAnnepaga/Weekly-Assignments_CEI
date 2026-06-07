@@ -149,7 +149,7 @@ if page == "🌐 Intelligence Platform":
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
         st.subheader("📈 Future Demand Forecast (24 Months)")
         if prophet_model is not None:
-            future = prophet_model.make_future_dataframe(periods=24, freq='M')
+            future = prophet_model.make_future_dataframe(periods=24, freq='MS')
             forecast = prophet_model.predict(future)
             
             fig = go.Figure()
