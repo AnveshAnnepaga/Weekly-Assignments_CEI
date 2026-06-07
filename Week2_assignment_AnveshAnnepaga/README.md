@@ -1,6 +1,6 @@
 # ⚡ Tesla Sales & Delivery Intelligence Platform
  
-*(**Live Demo:** [Click here to view the Live Demo](#) - replace with your Streamlit Cloud link after deployment)*
+*(**Live Demo:** [https://teslasalesanddeliveryintelligenceplatform.streamlit.app/])*
 
 ## Project Overview
 This project presents an enterprise-grade analytics dashboard that visualizes Tesla's historical sales, explores key vehicle metrics, and forecasts future deliveries using state-of-the-art machine learning models (Random Forest and Prophet). 
