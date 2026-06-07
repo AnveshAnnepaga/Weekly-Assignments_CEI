@@ -1,0 +1,107 @@
+/* Premium Dark Theme & Glassmorphism CSS */
+
+/* Base Streamlit App Background */
+.stApp {
+    background-color: #0B0F19; /* Deep navy/slate dark background */
+    color: #E2E8F0;
+    font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+/* Sidebar Styling */
+[data-testid="stSidebar"] {
+    background-color: rgba(15, 23, 42, 0.7) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Radio button text in sidebar */
+[data-testid="stSidebar"] .stRadio label {
+    font-weight: 500;
+    font-size: 1.05rem;
+    padding: 0.5rem 0;
+}
+
+/* Cards (Glassmorphism) */
+div.css-1r6slb0, div.st-emotion-cache-1r6slb0, .glass-card {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease-in-out;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Headers and Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: #F8FAFC !important;
+    font-weight: 600 !important;
+}
+
+h1 {
+    font-size: 2.5rem !important;
+    letter-spacing: -0.025em;
+    background: linear-gradient(to right, #ffffff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem !important;
+}
+
+h2 {
+    font-size: 1.75rem !important;
+    margin-top: 1.5rem !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 0.5rem;
+}
+
+/* KPI Metrics */
+[data-testid="stMetricValue"] {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #38bdf8 !important; /* Electric Blue */
+}
+[data-testid="stMetricDelta"] {
+    font-size: 1rem !important;
+}
+
+/* Buttons */
+.stButton > button {
+    background: linear-gradient(135deg, #e23636 0%, #b91c1c 100%) !important; /* Tesla Red */
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 14px 0 rgba(226, 54, 54, 0.39) !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(226, 54, 54, 0.5) !important;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+/* Hide Streamlit Branding */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+/* Custom Text Classes */
+.subtext {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.highlight {
+    color: #e23636;
+    font-weight: 600;
+}
