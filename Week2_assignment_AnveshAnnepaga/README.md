@@ -1,6 +1,5 @@
 # ⚡ Tesla Sales & Delivery Intelligence Platform
-
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](#) 
+ 
 *(**Live Demo:** [Click here to view the Live Demo](#) - replace with your Streamlit Cloud link after deployment)*
 
 ## Project Overview
